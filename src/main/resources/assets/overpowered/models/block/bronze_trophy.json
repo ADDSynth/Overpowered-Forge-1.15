@@ -1,0 +1,8 @@
+{
+  "parent": "overpowered:block/trophy_model",
+  "textures": {
+    "particle":              "overpowered:blocks/trophies/bronze_trophy",
+    "trophy_texture":        "overpowered:blocks/trophies/bronze_trophy",
+    "trophy_texture_inside": "overpowered:blocks/trophies/bronze_trophy_inside"
+  }
+}

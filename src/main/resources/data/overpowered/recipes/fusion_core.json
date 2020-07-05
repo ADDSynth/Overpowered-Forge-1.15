@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "fff",
+    "fuf",
+    "fff"
+  ],
+  "key": {
+    "f": {
+      "item": "minecraft:fire_charge"
+    },
+    "u": {
+      "item": "overpowered:unknown_technology"
+    }
+  },
+  "result": {
+    "item": "overpowered:fusion_core"
+  }
+}

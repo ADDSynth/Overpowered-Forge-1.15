@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:energy_crystal"
+    },
+    "title": {
+      "translate": "advancements.overpowered.overpowered_gem.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.overpowered_gem.description"
+    }
+  },
+  "parent": "overpowered:overpowered/all_gems",
+  "criteria": {
+    "energy_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:energy_crystal"
+          }
+        ]
+      }
+    }
+  }
+}

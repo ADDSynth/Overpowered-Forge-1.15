@@ -1,0 +1,9 @@
+{
+  "type": "addsynth_energy:compressor",
+  "ingredients": [
+    {"tag": "forge:ingots/tin"}
+  ],
+  "result": {
+    "item": "overpowered:tin_plate"
+  }
+}

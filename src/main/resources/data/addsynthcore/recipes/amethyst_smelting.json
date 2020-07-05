@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "overpowered:amethyst_ore"
+  },
+  "result": "overpowered:amethyst",
+  "experience": 1.0,
+  "cookingtime": 200
+}

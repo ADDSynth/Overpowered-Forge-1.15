@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sss",
+    "sss",
+    "sss"
+  ],
+  "key": {
+    "s": {
+      "item": "overpowered:quartz_shard"
+    }
+  },
+  "result": {
+    "item": "minecraft:quartz"
+  }
+}

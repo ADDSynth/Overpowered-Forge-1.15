@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:black_hole"
+    },
+    "title": {
+      "translate": "advancements.overpowered.black_hole.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.black_hole.description"
+    }
+  },
+  "parent": "overpowered:overpowered/unknown_technology",
+  "criteria": {
+    "gold_trophy": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:black_hole"
+          }
+        ]
+      }
+    }
+  }
+}

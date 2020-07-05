@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:null_block"
+    },
+    "title": {
+      "translate": "advancements.overpowered.null_block.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.null_block.description"
+    }
+  },
+  "parent": "overpowered:overpowered/void_crystal",
+  "criteria": {
+    "void_crystal": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:null_block"
+          }
+        ]
+      }
+    }
+  }
+}

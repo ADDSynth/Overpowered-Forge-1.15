@@ -1,0 +1,26 @@
+{
+  "display": {
+    "icon": {
+      "item": "overpowered:identifier"
+    },
+    "title": {
+      "translate": "advancements.overpowered.craft_identifier.title"
+    },
+    "description": {
+      "translate": "advancements.overpowered.craft_identifier.description"
+    }
+  },
+  "parent": "overpowered:overpowered/void_crystal",
+  "criteria": {
+    "identifier": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "item": "overpowered:identifier"
+          }
+        ]
+      }
+    }
+  }
+}

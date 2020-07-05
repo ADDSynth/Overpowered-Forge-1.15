@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "aca",
+    "cpc",
+    "aca"
+  ],
+  "key": {
+    "a": {
+      "tag": "forge:plates/aluminum"
+    },
+    "c": {
+      "item": "overpowered:energy_crystal_shards"
+    },
+    "p": {
+      "item": "addsynth_energy:advanced_power_core"
+    }
+  },
+  "result": {
+    "item": "overpowered:gem_converter"
+  }
+}
