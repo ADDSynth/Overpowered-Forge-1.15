@@ -15,13 +15,15 @@ import net.minecraft.item.ItemStack;
 
 public final class RenderUtil {
 
+  // TODO: Reimplement RenderUtil.
+  /*
   private static final Method setup_gui_transform_method =
     JavaUtils.getMethod(ItemRenderer.class, "func_180452_a", int.class, int.class, boolean.class);
 
   private static final Method render_model_method =
     JavaUtils.getMethod(ItemRenderer.class, "func_191967_a", IBakedModel.class, int.class, ItemStack.class);
 
-
+  */
   /** <p>NOTE: This is an exact copy of {@link ItemRenderer#renderItemModelIntoGUI(ItemStack, int, int, IBakedModel)}.
    *     You MUST ensure there aren't any changes whenver the Forge version updates!
    * @param stack
@@ -30,8 +32,6 @@ public final class RenderUtil {
    * @param opacity
    */
   public static final void drawItemStack(ItemRenderer itemRenderer, TextureManager textureManager, ItemStack stack, int x, int y, float opacity){
-    itemRenderer.renderItemIntoGUI(stack, x, y);
-    // TODO: Reimplement RenderUtil.
     /*
     if(stack.isEmpty()){
       return;

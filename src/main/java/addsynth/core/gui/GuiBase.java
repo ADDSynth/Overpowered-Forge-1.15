@@ -190,9 +190,9 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
    * @param y
    * @param opacity
    */
-  protected final void drawItemStack(final ItemStack stack, final int x, final int y, final float opacity){
-    RenderUtil.drawItemStack(this.itemRenderer, this.textureManager, stack, x, y, opacity);
-  }
+  // protected final void drawItemStack(final ItemStack stack, final int x, final int y, final float opacity){
+  //   RenderUtil.drawItemStack(this.itemRenderer, this.textureManager, stack, x, y, opacity);
+  // }
 
   /** <p>Use this to draw 2 ItemStacks but at a linear opacity between the two.
    *  <p>This function draws the first ItemStack first, then the second. With a
@@ -206,8 +206,9 @@ public abstract class GuiBase<T extends Container> extends ContainerScreen<T> {
    * @param blend_factor
    */
   protected final void blendItemStacks(ItemStack first_stack, ItemStack second_stack, int x, int y, float blend_factor){
-    drawItemStack( first_stack, x, y, 1.0f - blend_factor);
-    drawItemStack(second_stack, x, y,        blend_factor);
+    drawItemStack(first_stack, x, y);
+    // drawItemStack( first_stack, x, y, 1.0f - blend_factor);
+    // drawItemStack(second_stack, x, y,        blend_factor);
   }
 
 }
