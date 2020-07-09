@@ -14,6 +14,7 @@ import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Init;
 import addsynth.overpoweredmod.game.core.Laser;
 import addsynth.overpoweredmod.game.core.Machines;
+import addsynth.overpoweredmod.game.core.Portal;
 import addsynth.overpoweredmod.machines.Filters;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.GuiAdvancedOreRefinery;
 import addsynth.overpoweredmod.machines.advanced_ore_refinery.OreRefineryRecipes;
@@ -158,6 +159,7 @@ public class OverpoweredMod {
   private static final void set_block_render_types(){
     final RenderType translucent = RenderType.getTranslucent();
     RenderTypeLookup.setRenderLayer(Init.null_block,    translucent);
+    RenderTypeLookup.setRenderLayer(Portal.portal,      translucent);
     RenderTypeLookup.setRenderLayer(Laser.WHITE.beam,   translucent);
     RenderTypeLookup.setRenderLayer(Laser.RED.beam,     translucent);
     RenderTypeLookup.setRenderLayer(Laser.ORANGE.beam,  translucent);
