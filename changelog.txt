@@ -8,6 +8,7 @@ v1.3.1 - TBD
   Fixed, Gem Ores now drop experience again.
    - Only in Minecraft 1.14 and 1.15 versions.
   Added Gem Converter advancements.
+  Fix description for Void Crystal advancement not being translated.
 
 
 
