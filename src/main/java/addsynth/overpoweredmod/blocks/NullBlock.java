@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -23,6 +24,16 @@ public final class NullBlock extends Block {
   @SuppressWarnings("deprecation")
   public final VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
      return VoxelShapes.empty();
+  }
+
+  // The Null Block is also translucent, so logically it should choose NOT to
+  // render sides adjacent to other Null Blocks, but I kind of like this aesthetic.
+  // See Portal Energy Block, Energy Storage Container, Laser Beam, and Energy Bridge
+  // blocks for the implementation.
+  @Override
+  @SuppressWarnings("deprecation")
+  public final boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side){
+    return super.isSideInvisible(state, adjacentBlockState, side);
   }
 
 }

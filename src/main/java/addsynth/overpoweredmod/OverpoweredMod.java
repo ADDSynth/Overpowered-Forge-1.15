@@ -176,6 +176,7 @@ public class OverpoweredMod {
     RenderTypeLookup.setRenderLayer(Machines.cyan_energy_bridge,    translucent);
     RenderTypeLookup.setRenderLayer(Machines.blue_energy_bridge,    translucent);
     RenderTypeLookup.setRenderLayer(Machines.magenta_energy_bridge, translucent);
+    RenderTypeLookup.setRenderLayer(Machines.fusion_control_laser_beam, translucent);
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){

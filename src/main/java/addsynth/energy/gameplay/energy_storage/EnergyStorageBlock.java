@@ -9,7 +9,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
@@ -17,6 +16,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -29,7 +29,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public final class EnergyStorageBlock extends MachineBlock {
 
   public EnergyStorageBlock(final String name){
-    super(SoundType.GLASS);
+    super(Block.Properties.create(Material.IRON).sound(SoundType.GLASS).variableOpacity().notSolid());
     ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
   }
 
@@ -39,8 +39,15 @@ public final class EnergyStorageBlock extends MachineBlock {
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(IBlockReader worldIn){
     return new TileEnergyStorage();
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public float getAmbientOcclusionLightValue(BlockState state, IBlockReader worldIn, BlockPos pos){
+    return 1.0f;
   }
 
   @Override
@@ -53,6 +60,12 @@ public final class EnergyStorageBlock extends MachineBlock {
       }
     }
     return ActionResultType.SUCCESS;
+  }
+
+  @Override
+  @SuppressWarnings("deprecation")
+  public final boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side){
+    return adjacentBlockState.getBlock() == this ? true : super.isSideInvisible(state, adjacentBlockState, side);
   }
 
 }

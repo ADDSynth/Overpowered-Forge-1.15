@@ -110,7 +110,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
   }
 
   public LaserCannon(final String name, final int color){
-    super(Block.Properties.create(Material.IRON, MaterialColor.STONE).sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f));
+    super(Block.Properties.create(Material.IRON, MaterialColor.STONE).sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f).notSolid());
     OverpoweredMod.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.machines_creative_tab));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
     this.color = color;
@@ -176,6 +176,7 @@ public final class LaserCannon extends BlockTile implements IWaterLoggable {
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(IBlockReader world){
     return color == -1 ? null : new TileLaser();
   }

@@ -32,7 +32,7 @@ public final class PortalEnergyBlock extends ContainerBlock {
   public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
 
   public PortalEnergyBlock(final String name){
-    super(Block.Properties.create(Material.PORTAL));
+    super(Block.Properties.create(Material.PORTAL).doesNotBlockMovement().noDrops().variableOpacity());
     OverpoweredMod.registry.register_block(this, name, new Item.Properties());
     // Portal Energy Block needs an ItemBlock form to use as an icon for the Achievement.
   }
@@ -40,7 +40,7 @@ public final class PortalEnergyBlock extends ContainerBlock {
   @Override
   @SuppressWarnings("deprecation")
   public final VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context){
-     return VoxelShapes.empty();
+    return VoxelShapes.empty();
   }
 
   @Override
@@ -75,14 +75,22 @@ public final class PortalEnergyBlock extends ContainerBlock {
   }
 
   @Override
+  @SuppressWarnings("deprecation")
   public final TileEntity createNewTileEntity(final IBlockReader world){
     return new TilePortal();
   }
 
   @Override
   @SuppressWarnings("deprecation")
-  public ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state){
+  public final ItemStack getItem(IBlockReader worldIn, BlockPos pos, BlockState state){
     return ItemStack.EMPTY;
+  }
+
+  // Portal Energy block doesn't need it for some reason?
+  @Override
+  @SuppressWarnings("deprecation")
+  public final boolean isSideInvisible(BlockState state, BlockState adjacentBlockState, Direction side){
+    return adjacentBlockState.getBlock() == this ? true : super.isSideInvisible(state, adjacentBlockState, side);
   }
 
 }

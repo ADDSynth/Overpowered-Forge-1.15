@@ -79,8 +79,7 @@ public class ADDSynthEnergy {
   }
 
   private static final void set_block_render_types(){
-    // FIX ground not visible when looking through Energy Storage block.
-    // RenderTypeLookup.setRenderLayer(EnergyBlocks.energy_storage, RenderType.getTranslucent());
+    RenderTypeLookup.setRenderLayer(EnergyBlocks.energy_storage, RenderType.getTranslucent());
   }
 
   public static final void mod_config_event(final ModConfig.ModConfigEvent event){
