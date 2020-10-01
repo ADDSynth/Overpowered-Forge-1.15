@@ -18,25 +18,14 @@ import net.minecraft.world.World;
  */
 public abstract class MachineBlock extends BlockTile {
 
-  /** Material, Color, Sound, Hardness & Resitance already set. */
-  protected static final Block.Properties default_properties =
-    Block.Properties.create(Material.IRON, MaterialColor.IRON)
-    .sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f);
-
+  /** Specify your own Block Properties. Required if block is transparent! */
   public MachineBlock(final Block.Properties properties){
     super(properties);
   }
 
-  public MachineBlock(){
-    super(Block.Properties.create(Material.IRON, MaterialColor.IRON).sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f));
-  }
-
+  /** Standard constructor. SoundType = Metal, and standard block hardness. */
   public MachineBlock(final MaterialColor color){
     super(Block.Properties.create(Material.IRON, color).sound(SoundType.METAL).hardnessAndResistance(3.5f, 6.0f));
-  }
-
-  public MachineBlock(final SoundType sound){
-    super(Block.Properties.create(Material.IRON, MaterialColor.IRON).sound(sound).hardnessAndResistance(3.5f, 6.0f));
   }
 
   @Override
