@@ -2,13 +2,13 @@ package addsynth.energy.gameplay.universal_energy_interface;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import addsynth.core.util.ArrayUtil;
-import addsynth.energy.main.Energy;
-import addsynth.energy.main.IEnergyUser;
+import addsynth.core.util.java.ArrayUtil;
 import addsynth.energy.compat.energy.EnergyCompat;
 import addsynth.energy.compat.energy.forge.ForgeEnergyIntermediary;
 import addsynth.energy.energy_network.tiles.TileEnergyNetwork;
 import addsynth.energy.gameplay.Config;
+import addsynth.energy.main.Energy;
+import addsynth.energy.main.IEnergyUser;
 import addsynth.energy.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

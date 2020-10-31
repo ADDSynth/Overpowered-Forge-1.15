@@ -1,7 +1,7 @@
 package addsynth.core.gui;
 
 import java.lang.reflect.Method;
-import addsynth.core.util.JavaUtils;
+import addsynth.core.util.java.JavaUtils;
 import net.minecraft.client.renderer.ItemRenderer;
 import net.minecraft.client.renderer.model.IBakedModel;
 import net.minecraft.client.renderer.texture.TextureManager;
