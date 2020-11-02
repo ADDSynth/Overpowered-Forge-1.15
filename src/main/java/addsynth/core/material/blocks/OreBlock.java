@@ -1,6 +1,5 @@
 package addsynth.core.material.blocks;
 
-import addsynth.core.ADDSynthCore;
 import addsynth.core.material.MiningStrength;
 import addsynth.core.util.math.MathUtility;
 import addsynth.overpoweredmod.OverpoweredMod;
@@ -45,7 +44,7 @@ public class OreBlock extends Block {
   }
 
   @Override
-  public int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch){
+  public final int getExpDrop(BlockState state, IWorldReader world, BlockPos pos, int fortune, int silktouch){
     return silktouch == 0 ? MathUtility.RandomRange(min_experience, max_experience) : 0;
   }
 

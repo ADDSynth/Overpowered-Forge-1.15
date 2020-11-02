@@ -25,7 +25,7 @@ public final class LaserNetwork extends BlockNetwork<TileLaserHousing> {
   private int number_of_lasers;
   private boolean activated;
   private int laser_distance;
-  public final Receiver energy = new Receiver(0,1000);
+  public final Receiver energy = new Receiver(0, 1000);
   public boolean running;
   public boolean auto_shutoff;
 
