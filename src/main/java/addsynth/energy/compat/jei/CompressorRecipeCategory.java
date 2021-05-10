@@ -6,6 +6,7 @@ import mezz.jei.api.helpers.IGuiHelper;
 import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.EnergyBlocks;
 import addsynth.energy.gameplay.compressor.recipe.CompressorRecipe;
+import addsynth.energy.registers.Names;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.IRecipeLayout;
 import mezz.jei.api.ingredients.IIngredients;
@@ -15,7 +16,7 @@ import net.minecraft.util.ResourceLocation;
 
 public final class CompressorRecipeCategory implements IRecipeCategory<CompressorRecipe> {
 
-  public static final ResourceLocation id = new ResourceLocation(ADDSynthEnergy.MOD_ID, "compressor");
+  public static final ResourceLocation id = Names.COMPRESSOR;
   private final ResourceLocation compressor_gui_texture = new ResourceLocation(ADDSynthEnergy.MOD_ID, "textures/gui/gui_textures.png");
   private final IDrawable background;
   private final IDrawable icon;
