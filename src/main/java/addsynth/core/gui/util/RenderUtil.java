@@ -1,11 +1,22 @@
 package addsynth.core.gui.util;
 
-import java.lang.reflect.Method;
-import addsynth.core.util.java.JavaUtils;
+/*
+import com.mojang.blaze3d.matrix.MatrixStack;
+import com.mojang.blaze3d.platform.GlStateManager;
+import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.IRenderTypeBuffer;
 import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.client.renderer.model.IBakedModel;
+import net.minecraft.client.renderer.model.ItemCameraTransforms;
+import net.minecraft.client.renderer.texture.AtlasTexture;
+import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+*/
 
 /** I went through all this trouble just to be able to render Items at a varying opacity,
  *  using Reflection.
@@ -16,95 +27,64 @@ import net.minecraft.item.ItemStack;
 public final class RenderUtil {
 
   // TODO: Reimplement RenderUtil.
-  /*
-  private static final Method setup_gui_transform_method =
-    JavaUtils.getMethod(ItemRenderer.class, "func_180452_a", int.class, int.class, boolean.class);
+  // REMOVE: If I'm still unable to do this in 2026, then remove this file.
 
-  private static final Method render_model_method =
-    JavaUtils.getMethod(ItemRenderer.class, "func_191967_a", IBakedModel.class, int.class, ItemStack.class);
-
-  */
-  /** <p>CHECK: This is an exact copy of {@link ItemRenderer#renderItemModelIntoGUI(ItemStack, int, int, IBakedModel)}.
+  /* <p>CHECK: This is an exact copy of {@link ItemRenderer#renderItemModelIntoGUI(ItemStack, int, int, IBakedModel)}.
    *     You MUST ensure there aren't any changes whenver the Forge version updates!
    * @param stack
    * @param x
    * @param y
    * @param opacity
-   */
+   *
+  @SuppressWarnings({ "null", "resource", "deprecation" })
   public static final void drawItemStack(ItemRenderer itemRenderer, TextureManager textureManager, ItemStack stack, int x, int y, float opacity){
-    /*
     if(stack.isEmpty()){
-      return;
-    }
-    if(setup_gui_transform_method == null || render_model_method == null){
-      itemRenderer.renderItemIntoGUI(stack, x, y);
       return;
     }
     
     try{
-      IBakedModel bakedmodel = itemRenderer.getModelWithOverrides(stack);
+      IBakedModel bakedmodel = itemRenderer.getItemModelWithOverrides(stack, (World)null, (LivingEntity)null);
       
-      GlStateManager.pushMatrix();
-      textureManager.bindTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE);
-      textureManager.getTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE).setBlurMipmap(false, false);
-      GlStateManager.enableRescaleNormal();
-      GlStateManager.enableAlphaTest();
-      GlStateManager.alphaFunc(516, 0.1F);
-      GlStateManager.enableBlend();
+      RenderSystem.pushMatrix();
+      GuiUtil.textureManager.bindTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE);
+      GuiUtil.textureManager.getTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE).setBlurMipmapDirect(false, false);
+      RenderSystem.enableRescaleNormal();
+      RenderSystem.enableAlphaTest();
+      RenderSystem.defaultAlphaFunc();
+      RenderSystem.enableBlend();
       // https://www.khronos.org/opengl/wiki/Blending
       // http://docs.gl/gl4/glBlendFunc
       // http://www.opengl-tutorial.org/intermediate-tutorials/tutorial-10-transparency/
       // https://learnopengl.com/Advanced-OpenGL/Blending
       // http://i.stack.imgur.com/i2IAC.jpg
       // https://andersriggelsen.dk/glblendfunc.php
-      GlStateManager.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
-      GlStateManager.color4f(1.0F, 1.0F, 1.0F, opacity);
-      setup_gui_transform_method.invoke(itemRenderer, x, y, bakedmodel.isGui3d());
-      bakedmodel = ForgeHooksClient.handleCameraTransforms(bakedmodel, ItemCameraTransforms.TransformType.GUI, false);
-      custom_render_item(itemRenderer, textureManager, stack, bakedmodel, opacity);
-      GlStateManager.disableAlphaTest();
-      GlStateManager.disableRescaleNormal();
-      GlStateManager.disableLighting();
-      GlStateManager.popMatrix();
-      textureManager.bindTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE);
-      textureManager.getTexture(AtlasTexture.LOCATION_BLOCKS_TEXTURE).restoreLastBlurMipmap();
-    }
-    catch(Exception e){
-    }
-    */
-  }
-
-  /** CHECK: This is an exact replica of {@link ItemRenderer#renderItem(ItemStack, IBakedModel)}.
-   *  Must check for ANY changes whenever you update Forge!
-   */
-  private static final void custom_render_item(ItemRenderer itemRenderer, TextureManager textureManager, ItemStack stack, IBakedModel model, float opacity){
-  /*
-    GlStateManager.pushMatrix();
-    GlStateManager.translatef(-0.5F, -0.5F, -0.5F);
-    if(model.isBuiltInRenderer()){
-      GlStateManager.color4f(1.0F, 1.0F, 1.0F, opacity);
-      GlStateManager.enableRescaleNormal();
-      stack.getItem().getTileEntityItemStackRenderer().renderByItem(stack);
-    }
-    else{
-      renderModel(itemRenderer, model, Color.make(255, 255, 255, opacity), stack);
-      if(stack.hasEffect()){
-        ItemRenderer.renderEffect(textureManager, () -> {
-          renderModel(itemRenderer, model, -8372020, ItemStack.EMPTY);
-        }, 8);
+      RenderSystem.blendFunc(GlStateManager.SourceFactor.SRC_ALPHA, GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA);
+      RenderSystem.color4f(1.0F, 1.0F, 1.0F, opacity);
+      RenderSystem.translatef((float)x, (float)y, 100.0F + GuiUtil.itemRenderer.zLevel);
+      RenderSystem.translatef(8.0F, 8.0F, 0.0F);
+      RenderSystem.scalef(1.0F, -1.0F, 1.0F);
+      RenderSystem.scalef(16.0F, 16.0F, 16.0F);
+      MatrixStack matrixstack = new MatrixStack();
+      IRenderTypeBuffer.Impl irendertypebuffer$impl = Minecraft.getInstance().getRenderTypeBuffers().getBufferSource();
+      boolean flag = !bakedmodel.func_230044_c_();
+      if (flag) {
+         RenderHelper.setupGuiFlatDiffuseLighting();
       }
-    }
 
-    GlStateManager.popMatrix();
-  }
+      GuiUtil.itemRenderer.renderItem(stack, ItemCameraTransforms.TransformType.GUI, false, matrixstack, irendertypebuffer$impl, 15728880, OverlayTexture.NO_OVERLAY, bakedmodel);
+      irendertypebuffer$impl.finish();
+      RenderSystem.enableDepthTest();
+      if (flag) {
+         RenderHelper.setupGui3DDiffuseLighting();
+      }
 
-  private static final void renderModel(ItemRenderer itemRenderer, IBakedModel model, int color, ItemStack stack){
-    try{
-      render_model_method.invoke(itemRenderer, model, color, stack);
+      RenderSystem.disableAlphaTest();
+      RenderSystem.disableRescaleNormal();
+      RenderSystem.popMatrix();
     }
     catch(Exception e){
     }
-    */
   }
+  */
 
 }
