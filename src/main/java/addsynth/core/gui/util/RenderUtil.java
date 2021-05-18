@@ -26,10 +26,10 @@ import net.minecraft.world.World;
 
 public final class RenderUtil {
 
-  // TODO: Reimplement RenderUtil.
-  // REMOVE: If I'm still unable to do this in 2026, then remove this file.
+  // TODO: The only reason I needed this was to render transparent ItemStacks. I may be able to use
+  //       the new ItemStackTileEntityRenderer system: https://mcforge.readthedocs.io/en/1.16.x/rendering/ister/
 
-  /* <p>CHECK: This is an exact copy of {@link ItemRenderer#renderItemModelIntoGUI(ItemStack, int, int, IBakedModel)}.
+  /* <p>REPLICA: This is an exact copy of {@link ItemRenderer#renderItemModelIntoGUI(ItemStack, int, int, IBakedModel)}.
    *     You MUST ensure there aren't any changes whenver the Forge version updates!
    * @param stack
    * @param x
