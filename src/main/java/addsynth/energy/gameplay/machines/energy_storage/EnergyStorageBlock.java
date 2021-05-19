@@ -39,8 +39,8 @@ public final class EnergyStorageBlock extends MachineBlock {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
-  public final TileEntity createNewTileEntity(IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileEnergyStorage();
   }
 

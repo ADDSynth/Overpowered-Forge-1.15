@@ -1,7 +1,7 @@
 package addsynth.core.gameplay.music_box;
 
+import javax.annotation.Nullable;
 import addsynth.core.ADDSynthCore;
-import addsynth.core.blocks.BlockTile;
 import addsynth.core.gameplay.Core;
 import addsynth.core.gameplay.music_box.gui.GuiMusicBox;
 import addsynth.core.util.game.MinecraftUtility;
@@ -23,7 +23,7 @@ import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public final class MusicBox extends BlockTile {
+public final class MusicBox extends Block {
 
   public MusicBox(String name){
     super(Block.Properties.create(Material.WOOD, MaterialColor.WOOD).hardnessAndResistance(0.8f));
@@ -37,8 +37,8 @@ public final class MusicBox extends BlockTile {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
-  public final TileEntity createNewTileEntity(IBlockReader world){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
     return new TileMusicBox();
   }
 

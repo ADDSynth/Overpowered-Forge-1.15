@@ -40,7 +40,8 @@ public final class LaserHousing extends MachineBlock {
   }
 
   @Override
-  public final TileEntity createNewTileEntity(final IBlockReader worldIn){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
     return new TileLaserHousing();
   }
 

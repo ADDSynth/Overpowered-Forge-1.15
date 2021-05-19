@@ -1,10 +1,9 @@
 package addsynth.overpoweredmod.machines.portal.rift;
 
+import javax.annotation.Nullable;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
-import net.minecraft.block.ContainerBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +23,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
-public final class PortalEnergyBlock extends ContainerBlock {
+public final class PortalEnergyBlock extends Block {
 
   // NOTE: well, after seeing a YouTube video, I was going to make this extend from the Vanilla PortalBlock class,
   //       but I want this to have a TileEntity, then just implement ITileProvider?
@@ -50,12 +49,6 @@ public final class PortalEnergyBlock extends ContainerBlock {
 
   @Override
   @SuppressWarnings("deprecation")
-  public final BlockRenderType getRenderType(BlockState state){
-    return BlockRenderType.MODEL;
-  }
-
-  @Override
-  @SuppressWarnings("deprecation")
   public final void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity){
     if(world.isRemote == false){
       /*
@@ -75,8 +68,8 @@ public final class PortalEnergyBlock extends ContainerBlock {
   }
 
   @Override
-  @SuppressWarnings("deprecation")
-  public final TileEntity createNewTileEntity(final IBlockReader world){
+  @Nullable
+  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
     return new TilePortal();
   }
 
