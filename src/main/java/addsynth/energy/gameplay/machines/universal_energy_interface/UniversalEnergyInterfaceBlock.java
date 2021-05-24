@@ -1,4 +1,4 @@
-package addsynth.energy.gameplay.machines.compressor;
+package addsynth.energy.gameplay.machines.universal_energy_interface;
 
 import java.util.List;
 import javax.annotation.Nullable;
@@ -23,29 +23,29 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class Compressor extends MachineBlock {
+public final class UniversalEnergyInterfaceBlock extends MachineBlock {
 
-  public Compressor(final String name){
+  public UniversalEnergyInterfaceBlock(final String name){
     super(MaterialColor.WOOL);
     ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
   }
 
   @Override
   public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-    tooltip.add(new StringTextComponent("Class 1 Machine"));
+    tooltip.add(new StringTextComponent("Energy Machine"));
   }
 
   @Override
   @Nullable
   public final TileEntity createTileEntity(BlockState state, IBlockReader world){
-    return new TileCompressor();
+    return new TileUniversalEnergyInterface();
   }
 
   @Override
   @SuppressWarnings("deprecation")
   public final ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileCompressor tile = MinecraftUtility.getTileEntity(pos, world, TileCompressor.class);
+      final TileUniversalEnergyInterface tile = MinecraftUtility.getTileEntity(pos, world, TileUniversalEnergyInterface.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }

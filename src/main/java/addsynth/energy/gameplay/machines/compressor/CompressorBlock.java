@@ -1,11 +1,10 @@
-package addsynth.overpoweredmod.machines.identifier;
+package addsynth.energy.gameplay.machines.compressor;
 
 import java.util.List;
 import javax.annotation.Nullable;
 import addsynth.core.util.game.MinecraftUtility;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.lib.blocks.MachineBlock;
-import addsynth.overpoweredmod.OverpoweredTechnology;
-import addsynth.overpoweredmod.assets.CreativeTabs;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.MaterialColor;
 import net.minecraft.client.util.ITooltipFlag;
@@ -24,29 +23,29 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class Identifier extends MachineBlock {
+public final class CompressorBlock extends MachineBlock {
 
-  public Identifier(final String name){
-    super(MaterialColor.SNOW);
-    OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
+  public CompressorBlock(final String name){
+    super(MaterialColor.WOOL);
+    ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
   }
 
   @Override
   public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-    tooltip.add(new StringTextComponent("Class 3 Machine"));
+    tooltip.add(new StringTextComponent("Class 1 Machine"));
   }
 
   @Override
   @Nullable
   public final TileEntity createTileEntity(BlockState state, IBlockReader world){
-    return new TileIdentifier();
+    return new TileCompressor();
   }
 
   @Override
   @SuppressWarnings("deprecation")
   public final ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileIdentifier tile = MinecraftUtility.getTileEntity(pos, world, TileIdentifier.class);
+      final TileCompressor tile = MinecraftUtility.getTileEntity(pos, world, TileCompressor.class);
       if(tile != null){
         NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }

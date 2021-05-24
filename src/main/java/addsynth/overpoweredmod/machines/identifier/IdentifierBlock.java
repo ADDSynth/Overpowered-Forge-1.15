@@ -1,4 +1,4 @@
-package addsynth.overpoweredmod.machines.fusion.chamber;
+package addsynth.overpoweredmod.machines.identifier;
 
 import java.util.List;
 import javax.annotation.Nullable;
@@ -20,61 +20,38 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public final class FusionChamber extends MachineBlock {
+public final class IdentifierBlock extends MachineBlock {
 
-  public FusionChamber(final String name){
+  public IdentifierBlock(final String name){
     super(MaterialColor.SNOW);
     OverpoweredTechnology.registry.register_block(this, name, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override
   public final void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn){
-    tooltip.add(new StringTextComponent("Fusion Energy"));
+    tooltip.add(new StringTextComponent("Class 3 Machine"));
   }
 
   @Override
   @Nullable
-  public final TileEntity createTileEntity(BlockState state, final IBlockReader world){
-    return new TileFusionChamber();
+  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
+    return new TileIdentifier();
   }
 
   @Override
   @SuppressWarnings("deprecation")
   public final ActionResultType onBlockActivated(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit){
     if(world.isRemote == false){
-      final TileFusionChamber tile = MinecraftUtility.getTileEntity(pos, world, TileFusionChamber.class);
-      if(tile == null){ return ActionResultType.PASS; }
-      if(tile.is_on()){ return ActionResultType.PASS; }
-      NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
-    }
-    return ActionResultType.SUCCESS;
-  }
-
-  @Override
-  public final void onBlockHarvested(final World worldIn, final BlockPos pos, final BlockState state, final PlayerEntity player){
-    super.onBlockHarvested(worldIn, pos, state, player);
-    check_container(worldIn, pos);
-  }
-
-  @Override
-  public final void onExplosionDestroy(final World world, final BlockPos pos, final Explosion explosion){
-    check_container(world, pos);
-  }
-
-  private static final void check_container(final World world, final BlockPos position){
-    if(world.isRemote == false){
-      final TileFusionChamber tile = MinecraftUtility.getTileEntity(position, world, TileFusionChamber.class);
+      final TileIdentifier tile = MinecraftUtility.getTileEntity(pos, world, TileIdentifier.class);
       if(tile != null){
-        if(tile.is_on()){
-          tile.explode();
-        }
+        NetworkHooks.openGui((ServerPlayerEntity)player, tile, pos);
       }
     }
+    return ActionResultType.SUCCESS;
   }
 
 }
