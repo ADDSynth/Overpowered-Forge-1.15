@@ -145,8 +145,8 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
 
   protected Class<T> class_type;
 
-  /** All the blocks that are in this block network. */
-  protected final NodeList blocks = new NodeList();
+  /** All the TileEntities that are in this block network. */
+  protected final NodeList<T> blocks = new NodeList<>();
 
 
 
@@ -248,7 +248,7 @@ public abstract class BlockNetwork<T extends TileEntity & IBlockNetworkUser> {
   protected void onUpdateNetworkFinished(){
   }
 
-  protected void customSearch(final Node node){
+  protected void customSearch(final Node<T> node){
   }
 
   // DELETE: Once we start coding for MC 1.16 and leave 1.12 behind, retest the onNeighborChange / neighborChanged issue, and

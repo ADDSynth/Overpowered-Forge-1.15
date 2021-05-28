@@ -2,10 +2,11 @@ package addsynth.core.block_network;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.function.Consumer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 
-public final class NodeList extends HashSet<Node> {
+public final class NodeList<T extends TileEntity> extends HashSet<Node<T>> {
 
   public NodeList(){
     super(100);
@@ -15,7 +16,7 @@ public final class NodeList extends HashSet<Node> {
     super(size);
   }
 
-  public final void setFrom(final HashSet<Node> hash_set){
+  public final void setFrom(final HashSet<Node<T>> hash_set){
     addAll(hash_set);
   }
 
@@ -29,10 +30,10 @@ public final class NodeList extends HashSet<Node> {
     return positions;
   }
 
-  public final ArrayList<TileEntity> getTileEntities(){
-    final ArrayList<TileEntity> tiles = new ArrayList<>(100);
-    TileEntity tile;
-    for(final Node node : this){
+  public final ArrayList<T> getTileEntities(){
+    final ArrayList<T> tiles = new ArrayList<>(100);
+    T tile;
+    for(final Node<T> node : this){
       tile = node.getTile();
       if(tile != null){
         if(node.isInvalid() == false){
@@ -63,6 +64,16 @@ public final class NodeList extends HashSet<Node> {
 
   public final void remove_invalid(){
     removeIf((Node n) -> n == null ? true : n.isInvalid());
+  }
+
+  public final void forAllTileEntities(final Consumer<T> action){
+    T tile;
+    for(final Node<T> node : this){
+      tile = node.getTile();
+      if(tile != null){
+        action.accept(tile);
+      }
+    }
   }
 
   @SuppressWarnings({"unchecked", "null"})

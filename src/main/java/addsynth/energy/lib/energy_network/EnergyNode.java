@@ -2,22 +2,29 @@ package addsynth.energy.lib.energy_network;
 
 import javax.annotation.Nonnull;
 import addsynth.core.block_network.Node;
+import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.lib.main.Energy;
 import addsynth.energy.lib.main.IEnergyUser;
 import net.minecraft.tileentity.TileEntity;
 
-public final class EnergyNode extends Node {
+public final class EnergyNode<E extends TileEntity & IEnergyUser> extends Node<E> {
 
   public final Energy energy;
 
-  public <E extends TileEntity & IEnergyUser> EnergyNode(@Nonnull final E tileEntity){
+  public EnergyNode(@Nonnull final E tileEntity){
     super(tileEntity.getPos(), tileEntity.getBlockState().getBlock(), tileEntity);
     this.energy = tileEntity.getEnergy();
   }
 
-  public EnergyNode(@Nonnull final TileEntity tileEntity, @Nonnull final Energy energy){
-    super(tileEntity.getPos(), tileEntity.getBlockState().getBlock(), tileEntity);
-    this.energy = energy;
+  @SuppressWarnings("unchecked")
+  public static final <R extends TileEntity & IEnergyUser> EnergyNode createEnergyNode(@Nonnull final TileEntity tile){
+    if(tile instanceof IEnergyUser){
+      return new EnergyNode<R>((R)tile);
+    }
+    ADDSynthEnergy.log.error(new ClassCastException(
+      "TileEntity input for "+EnergyNode.class.getName()+" does not implement the "+IEnergyUser.class.getSimpleName()+" interface!"
+    ));
+    return null;
   }
 
   @Override

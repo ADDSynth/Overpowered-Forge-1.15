@@ -104,20 +104,20 @@ public final class EnergyNetwork extends BlockNetwork<AbstractEnergyNetworkTile>
     final TileEntity tile = node.getTile();
     if(tile != null){
       if(tile instanceof ICustomEnergyUser){
-        add_energy_node(generators, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
-        add_energy_node(receivers, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
+        add_energy_node(generators, EnergyNode.createEnergyNode(tile));
+        add_energy_node(receivers, EnergyNode.createEnergyNode(tile));
         return;
       }
       if(tile instanceof IEnergyConsumer){
-        add_energy_node(receivers, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
+        add_energy_node(receivers, EnergyNode.createEnergyNode(tile));
         return;
       }
       if(tile instanceof IEnergyGenerator){
-        add_energy_node(generators, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
+        add_energy_node(generators, EnergyNode.createEnergyNode(tile));
         return;
       }
       if(tile instanceof IEnergyUser){
-        add_energy_node(batteries, new EnergyNode(tile, ((IEnergyUser)tile).getEnergy()));
+        add_energy_node(batteries, EnergyNode.createEnergyNode(tile));
       }
     }
   }

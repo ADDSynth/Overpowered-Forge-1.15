@@ -6,6 +6,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.block_network.Node;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -18,7 +19,7 @@ public final class BlockUtil {
    * @param world
    * @param predicate The function that tests the Node.
    */
-  public static final HashSet<Node> find_blocks(final BlockPos from, final World world, final Predicate<Node> predicate){
+  public static final HashSet<Node<TileEntity>> find_blocks(final BlockPos from, final World world, final Predicate<Node> predicate){
     return find_blocks(from, world, predicate, null);
   }
 
@@ -30,8 +31,8 @@ public final class BlockUtil {
    * @param predicate The function that tests the Node.
    * @param consumer Supply a function that takes a Node as an argument. Allows you to run additional code on all Nodes searched.
    */
-  public static final HashSet<Node> find_blocks(final BlockPos from, final World world, final Predicate<Node> predicate, final Consumer<Node> consumer){
-    final HashSet<Node> list = new HashSet<>(100);
+  public static final HashSet<Node<TileEntity>> find_blocks(final BlockPos from, final World world, final Predicate<Node> predicate, final Consumer<Node> consumer){
+    final HashSet<Node<TileEntity>> list = new HashSet<>(100);
     try{
       final ArrayList<BlockPos> searched = new ArrayList<>(500);
       searched.add(from);
@@ -50,7 +51,7 @@ public final class BlockUtil {
   }
 
   private static final void search
-  (BlockPos from, ArrayList<BlockPos> searched, HashSet<Node> list, World world, Predicate<Node> predicate, Consumer<Node> consumer){
+  (BlockPos from, ArrayList<BlockPos> searched, HashSet<Node<TileEntity>> list, World world, Predicate<Node> predicate, Consumer<Node> consumer){
     BlockPos position;
     for(final Direction side : Direction.values()){
       position = from.offset(side);
@@ -63,8 +64,8 @@ public final class BlockUtil {
     }
   }
 
-  private static final boolean check(BlockPos position, HashSet<Node> list, World world, Predicate<Node> predicate, Consumer<Node> consumer){
-    final Node node = new Node(position, world);
+  private static final boolean check(BlockPos position, HashSet<Node<TileEntity>> list, World world, Predicate<Node> predicate, Consumer<Node> consumer){
+    final Node<TileEntity> node = Node.getNode(position, world);
     if(consumer != null){
       consumer.accept(node);
     }

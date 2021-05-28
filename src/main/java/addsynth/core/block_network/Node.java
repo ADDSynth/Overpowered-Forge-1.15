@@ -10,31 +10,29 @@ import net.minecraft.world.World;
 
 /** A Node neatly stores a Block Position, Block Type, and a TileEntity in the same object.
  *  The TileEntity can be null if no TileEntity exists at that location. */
-public class Node {
+public class Node <T extends TileEntity> {
 
   public final BlockPos position;
   public final Block block;
-  protected final TileEntity tile;
+  protected final T tile;
 
-  public Node(final BlockPos position, final World world){
-    this.position = position;
-    this.block = world.getBlockState(position).getBlock();
-    this.tile = world.getTileEntity(position);
+  public static final Node<TileEntity> getNode(final BlockPos position, final World world){
+    return new Node<TileEntity>(position, world.getBlockState(position).getBlock(), world.getTileEntity(position));
   }
 
-  public Node(@Nonnull final TileEntity tile){
+  public Node(@Nonnull final T tile){
     this.position = tile.getPos();
     this.block = tile.getBlockState().getBlock();
     this.tile = tile;
   }
 
-  public Node(final BlockPos position, @Nonnull final TileEntity tile){
+  public Node(final BlockPos position, @Nonnull final T tile){
     this.position = position;
     this.block = tile.getBlockState().getBlock();
     this.tile = tile;
   }
 
-  public Node(final BlockPos position, final Block block, final TileEntity tile){
+  public Node(final BlockPos position, final Block block, final T tile){
     this.position = position;
     this.block = block;
     this.tile = tile;
@@ -48,7 +46,7 @@ public class Node {
   }
 
   @Nullable
-  public TileEntity getTile(){
+  public T getTile(){
     return tile;
   }
 
