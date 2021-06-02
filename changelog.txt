@@ -71,6 +71,7 @@ FIXED:
     and Convert a Thousand Gems.
   Fixed advancements logging errors for items that were removed or disabled, I think.
   Fixed not translating block and item subtitles in their tooltips.
+  Fixed the Energy Storage Container not having any Block Hardness.
 REMOVED:
   Removed the ability to move some Overpowered items into other Creative Tabs.
   Removed the Unknown Technology item.

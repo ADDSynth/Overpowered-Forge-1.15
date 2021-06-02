@@ -29,7 +29,7 @@ import net.minecraftforge.fml.network.NetworkHooks;
 public final class EnergyStorageBlock extends MachineBlock {
 
   public EnergyStorageBlock(final String name){
-    super(Block.Properties.create(Material.IRON, MaterialColor.SNOW).variableOpacity().notSolid());
+    super(Block.Properties.create(Material.IRON, MaterialColor.SNOW).variableOpacity().notSolid().hardnessAndResistance(3.5f, 6.0f));
     ADDSynthEnergy.registry.register_block(this, name, new Item.Properties().group(ADDSynthEnergy.creative_tab));
   }
 
