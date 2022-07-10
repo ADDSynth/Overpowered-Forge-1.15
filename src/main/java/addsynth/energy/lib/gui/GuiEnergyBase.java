@@ -65,6 +65,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
     this.draw_energy_usage(6, 17);
   }
   
+  /** Draws the Energy Usage to the right of the Power Switch. */
   protected final void draw_energy_usage_after_switch(){
     this.draw_energy_usage(44, 21);
   }

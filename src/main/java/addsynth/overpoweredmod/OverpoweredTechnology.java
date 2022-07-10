@@ -27,6 +27,7 @@ import addsynth.overpoweredmod.machines.identifier.GuiIdentifier;
 import addsynth.overpoweredmod.machines.inverter.GuiInverter;
 import addsynth.overpoweredmod.machines.laser.machine.GuiLaserHousing;
 import addsynth.overpoweredmod.machines.magic_infuser.GuiMagicInfuser;
+import addsynth.overpoweredmod.machines.plasma_generator.GuiPlasmaGenerator;
 import addsynth.overpoweredmod.machines.portal.control_panel.GuiPortalControlPanel;
 import addsynth.overpoweredmod.machines.portal.frame.GuiPortalFrame;
 import addsynth.overpoweredmod.machines.suspension_bridge.GuiEnergySuspensionBridge;
@@ -139,6 +140,7 @@ public class OverpoweredTechnology {
     ScreenManager.registerFactory(Containers.PORTAL_CONTROL_PANEL,       GuiPortalControlPanel::new);
     ScreenManager.registerFactory(Containers.PORTAL_FRAME,               GuiPortalFrame::new);
     ScreenManager.registerFactory(Containers.LASER_HOUSING,              GuiLaserHousing::new);
+    ScreenManager.registerFactory(Containers.PLASMA_GENERATOR,           GuiPlasmaGenerator::new);
     ScreenManager.registerFactory(Containers.ADVANCED_ORE_REFINERY,      GuiAdvancedOreRefinery::new);
     ScreenManager.registerFactory(Containers.CRYSTAL_MATTER_GENERATOR,   GuiCrystalMatterGenerator::new);
     ScreenManager.registerFactory(Containers.FUSION_CHAMBER,             GuiFusionChamber::new);
