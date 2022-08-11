@@ -25,7 +25,6 @@ import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
@@ -177,17 +176,6 @@ public final class LaserCannon extends Block implements IWaterLoggable {
   @SuppressWarnings("deprecation")
   public IFluidState getFluidState(BlockState state){
     return state.get(WATERLOGGED) ? Fluids.WATER.getStillFluidState(false) : super.getFluidState(state);
-  }
-
-  @Override
-  public boolean hasTileEntity(BlockState state){
-    return color >= 0;
-  }
-
-  @Override
-  @Nullable
-  public final TileEntity createTileEntity(BlockState state, IBlockReader world){
-    return color == -1 ? null : new TileLaser();
   }
 
   @Override
