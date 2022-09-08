@@ -54,7 +54,7 @@ public final class MusicBox extends Block {
     if(world.isRemote){
       final TileMusicBox tile = MinecraftUtility.getTileEntity(pos, world, TileMusicBox.class);
       if(tile != null){
-        GuiProvider.openMusicBoxGui(tile, this);
+        GuiProvider.openMusicBoxGui(tile, getTranslationKey());
       }
     }
     return ActionResultType.SUCCESS;
