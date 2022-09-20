@@ -22,8 +22,10 @@ public final class OreGenerator {
 
   public static final void register(){
     // This is how it's done now apparently.
+    Biome.Category category;
     for(Biome biome : ForgeRegistries.BIOMES){
-      if(biome.getCategory() != Biome.Category.NETHER && biome.getCategory() != Biome.Category.THEEND){
+      category = biome.getCategory();
+      if(category != Biome.Category.NETHER && category != Biome.Category.THEEND){
 
         if(WorldgenConfig.generate_ruby.get()){
           generate_single_ore(biome, Material.RUBY, WorldgenConfig.ruby_spawn_tries.get(),
