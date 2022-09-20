@@ -105,7 +105,6 @@ public final class ADDSynthCore {
     NetworkHandler.registerMessages();
     MaterialsUtil.registerResponder(CompatabilityManager::set_scythe_harvest_blocks);
     MaterialsUtil.registerResponder(Debug::dump_tags);
-    DeferredWorkQueue.runLater(() -> CompatabilityManager.init());
 
     log.info("Finished ADDSynthCore main setup.");
   }

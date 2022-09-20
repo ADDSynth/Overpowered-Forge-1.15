@@ -12,7 +12,6 @@ import addsynth.material.worldgen.OreGenerator;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DeferredWorkQueue;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.InterModComms.IMCMessage;
 import net.minecraftforge.fml.common.Mod;
@@ -73,7 +72,6 @@ public final class ADDSynthMaterials {
     // log.info("Begin ADDSynthMaterials main setup...");
     CommonUtil.displayModInfo(log, MOD_NAME, "ADDSynth", VERSION, DevStage.DEVELOPMENT, VERSION_DATE);
     OreGenerator.register();
-    // DeferredWorkQueue.runLater(OreGenerator::register);
     // log.info("Finished ADDSynthMaterials main setup.");
   }
 
