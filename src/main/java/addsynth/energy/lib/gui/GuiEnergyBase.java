@@ -53,7 +53,11 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   }
 
   protected final void draw_energy_after_switch(){
-    this.draw_energy(44, 21);
+    this.draw_energy(50, 21);
+  }
+
+  protected final void draw_energy_below_switch(){
+    this.draw_energy(6, 37);
   }
 
   protected final void draw_energy(final int draw_x, final int draw_y){
@@ -73,7 +77,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
   
   /** Draws the Energy Usage to the right of the Power Switch. */
   protected final void draw_energy_usage_after_switch(){
-    this.draw_energy_usage(44, 21);
+    this.draw_energy_usage(50, 21);
   }
   
   protected final void draw_energy_usage(final int draw_x, final int draw_y){
@@ -104,6 +108,10 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
 
   protected final void draw_status(final String status, final int x, final int y){
     GuiUtil.draw_text_left(status_text+": "+status, x, y);
+  }
+
+  protected final void draw_status_after_switch(final String status){
+    GuiUtil.draw_text_left(status_text+": "+status, 50, 21);
   }
 
   protected final void draw_status_below_switch(final String status){

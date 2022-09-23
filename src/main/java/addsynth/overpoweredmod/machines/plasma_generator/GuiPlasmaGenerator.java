@@ -23,7 +23,7 @@ public final class GuiPlasmaGenerator extends GuiEnergyBase<TilePlasmaGenerator,
   @Override
   public final void init(){
     super.init();
-    addButton(new OnOffSwitch<>(this.guiLeft + 6, this.guiTop + 17, tile));
+    addButton(new OnOffSwitch<>(this, tile));
   }
 
   @Override
@@ -35,7 +35,7 @@ public final class GuiPlasmaGenerator extends GuiEnergyBase<TilePlasmaGenerator,
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     guiUtil.draw_title(this.title);
-    draw_status(tile.getStatus(), 44, 21);
+    draw_status_after_switch(tile.getStatus());
     draw_energy_usage(6, 38);
     GuiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), 40, 62);
     draw_time_left(82);

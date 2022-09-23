@@ -24,7 +24,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
   @Override
   public final void init(){
     super.init();
-    addButton(new OnOffSwitch<>(this.guiLeft + 6, this.guiTop + 17, tile));
+    addButton(new OnOffSwitch<>(this, tile));
   }
 
   @Override
@@ -36,7 +36,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     guiUtil.draw_title(this.title);
-    draw_status(tile.getStatus(), 44, 21);
+    draw_status_after_switch(tile.getStatus());
     draw_energy_usage(6, 38);
     guiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), work_percentage_text_y);
     draw_time_left(98);
