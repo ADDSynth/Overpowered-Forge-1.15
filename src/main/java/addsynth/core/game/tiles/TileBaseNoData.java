@@ -23,7 +23,7 @@ public abstract class TileBaseNoData extends TileAbstractBase {
 
   @Override
   public final SUpdateTileEntityPacket getUpdatePacket(){
-    CompoundNBT nbtTag = new CompoundNBT();
+    final CompoundNBT nbtTag = new CompoundNBT();
     write(nbtTag);
     return new SUpdateTileEntityPacket(this.pos, -1, nbtTag);
   }
