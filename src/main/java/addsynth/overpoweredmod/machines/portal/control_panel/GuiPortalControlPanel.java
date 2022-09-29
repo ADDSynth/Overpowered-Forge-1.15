@@ -8,6 +8,7 @@ import addsynth.energy.lib.gui.widgets.AutoShutoffCheckbox;
 import addsynth.energy.lib.gui.widgets.EnergyProgressBar;
 import addsynth.energy.lib.gui.widgets.OnOffSwitch;
 import addsynth.energy.lib.gui.widgets.WorkProgressBar;
+import addsynth.material.MaterialTag;
 import addsynth.material.MaterialsUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -80,14 +81,14 @@ public final class GuiPortalControlPanel extends GuiEnergyBase<TilePortalControl
     
     // Set Portal Control Panel Gui Displayed ItemStacks
     final ItemStack[][] portal_control_panel_displayed_itemstacks = {
-      MaterialsUtil.getRubyBlocksIngredient().getMatchingStacks(),
-      MaterialsUtil.getTopazBlocksIngredient().getMatchingStacks(),
-      MaterialsUtil.getCitrineBlocksIngredient().getMatchingStacks(),
-      MaterialsUtil.getEmeraldBlocksIngredient().getMatchingStacks(),
-      MaterialsUtil.getDiamondBlocksIngredient().getMatchingStacks(),
-      MaterialsUtil.getSapphireBlocksIngredient().getMatchingStacks(),
-      MaterialsUtil.getAmethystBlocksIngredient().getMatchingStacks(),
-      MaterialsUtil.getQuartzBlocksIngredient().getMatchingStacks()
+      MaterialsUtil.getTagIngredient(MaterialTag.RUBY.BLOCKS).getMatchingStacks(),
+      MaterialsUtil.getTagIngredient(MaterialTag.TOPAZ.BLOCKS).getMatchingStacks(),
+      MaterialsUtil.getTagIngredient(MaterialTag.CITRINE.BLOCKS).getMatchingStacks(),
+      MaterialsUtil.getTagIngredient(MaterialTag.EMERALD.BLOCKS).getMatchingStacks(),
+      MaterialsUtil.getTagIngredient(MaterialTag.DIAMOND.BLOCKS).getMatchingStacks(),
+      MaterialsUtil.getTagIngredient(MaterialTag.SAPPHIRE.BLOCKS).getMatchingStacks(),
+      MaterialsUtil.getTagIngredient(MaterialTag.AMETHYST.BLOCKS).getMatchingStacks(),
+      MaterialsUtil.getTagIngredient(MaterialTag.QUARTZ.BLOCKS).getMatchingStacks()
     };
     gem_blocks.setRecipe(portal_control_panel_displayed_itemstacks);
   }
