@@ -9,6 +9,7 @@ import net.minecraft.block.RotatedPillarBlock;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.material.PushReaction;
 import net.minecraft.util.Direction;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
@@ -27,7 +28,7 @@ public final class EnergyBridge extends RotatedPillarBlock {
     super(Block.Properties.create(
       new Material(lens.color, false, true, true, false, false, false, false, PushReaction.BLOCK)
     ).lightValue(11).hardnessAndResistance(-1.0f, Constants.infinite_resistance).variableOpacity().noDrops());
-    OverpoweredTechnology.registry.register_block(this, name);
+    setRegistryName(new ResourceLocation(OverpoweredTechnology.MOD_ID, name));
   }
 
   public final BlockState getRotated(final Direction.Axis axis){

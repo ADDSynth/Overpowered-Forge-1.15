@@ -5,9 +5,9 @@ import addsynth.core.game.items.EquipmentType;
 import addsynth.core.game.items.Toolset;
 import addsynth.core.gameplay.items.ScytheTool;
 import addsynth.overpoweredmod.Debug;
-import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.compatability.CompatabilityManager;
+import addsynth.overpoweredmod.game.Names;
 import addsynth.overpoweredmod.items.tools.*;
 import addsynth.overpoweredmod.items.Ring;
 import addsynth.overpoweredmod.items.UnidentifiedItem;
@@ -21,17 +21,17 @@ public final class Tools {
     Debug.log_setup_info("Begin loading Tools class...");
   }
 
-  public static final Toolset overpowered_tools = new Toolset( // MAYBE: should I automatically assign tools their names? and just provide the base name? I should also pass the Mod ID to register translation keys as well.
-    new OverpoweredSword("celestial_sword"),
-    new OverpoweredShovel("celestial_shovel"),
-    new OverpoweredPickaxe("celestial_pickaxe"),
-    new OverpoweredAxe("celestial_axe"),
-    new OverpoweredHoe("celestial_hoe"),
+  public static final Toolset overpowered_tools = new Toolset(
+    new OverpoweredSword(),
+    new OverpoweredShovel(),
+    new OverpoweredPickaxe(),
+    new OverpoweredAxe(),
+    new OverpoweredHoe(),
     Init.celestial_gem
   );
     
   public static final ScytheTool overpowered_scythe =
-  new ScytheTool("celestial_scythe", OverpoweredTiers.CELESTIAL, OverpoweredTechnology.registry, new Item.Properties().group(CreativeTabs.tools_creative_tab)){
+  new ScytheTool(Names.CELESTIAL_SCYTHE, OverpoweredTiers.CELESTIAL, new Item.Properties().group(CreativeTabs.tools_creative_tab)){
     @Override
     public boolean isEnchantable(final ItemStack stack){
       return false;
@@ -44,11 +44,11 @@ public final class Tools {
   };
 
   public static final Toolset void_toolset = new Toolset(
-    new NullSword("void_sword"),
-    new NullShovel("void_shovel"),
-    new NullPickaxe("void_pickaxe"),
-    new NullAxe("void_axe"),
-    new NullHoe("void_hoe"),
+    new NullSword(),
+    new NullShovel(),
+    new NullPickaxe(),
+    new NullAxe(),
+    new NullHoe(),
     Init.void_crystal
   );
 

@@ -1,7 +1,6 @@
 package addsynth.core.gameplay.blocks;
 
 import javax.annotation.Nullable;
-import addsynth.core.ADDSynthCore;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -10,7 +9,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
@@ -31,10 +29,9 @@ public final class TrophyBlock extends Block implements IWaterLoggable {
 
   private static final VoxelShape collision_box = VoxelShapes.create(0.125, 0.0, 0.125, 0.875, 0.9375, 0.875);
 
-  public TrophyBlock(String name){
+  public TrophyBlock(){
     super(Block.Properties.create(Material.IRON).sound(SoundType.METAL).hardnessAndResistance(3.0f, 6.0f).harvestTool(ToolType.PICKAXE).harvestLevel(2));
     this.setDefaultState(this.stateContainer.getBaseState().with(FACING, Direction.NORTH).with(WATERLOGGED, false));
-    ADDSynthCore.registry.register_block(this, name, new Item.Properties().group(ADDSynthCore.creative_tab));
   }
 
   @Override
