@@ -60,15 +60,13 @@ public abstract class Wire extends Block implements IWaterLoggable {
   @Nullable
   @SuppressWarnings("resource")
   public final BlockState getStateForPlacement(final BlockItemUseContext context){
-    final IWorld world = context.getWorld();
-    final BlockPos position  = context.getPos();
-    final boolean[] valid_sides = get_valid_sides(world, position);
-    return getState(getDefaultState(), valid_sides, world, position);
+    return getState(getDefaultState(), context.getWorld(), context.getPos());
   }
 
   protected abstract boolean[] get_valid_sides(IBlockReader world, BlockPos pos);
 
-  private static final BlockState getState(final BlockState state, final boolean[] valid_sides, final IWorld world, final BlockPos position){
+  private final BlockState getState(final BlockState state, final IWorld world, final BlockPos position){
+    final boolean[] valid_sides = get_valid_sides(world, position);
     return state.with(DOWN,  valid_sides[DirectionConstant.DOWN ]).with(UP,    valid_sides[DirectionConstant.UP   ])
                 .with(NORTH, valid_sides[DirectionConstant.NORTH]).with(SOUTH, valid_sides[DirectionConstant.SOUTH])
                 .with(WEST,  valid_sides[DirectionConstant.WEST ]).with(EAST,  valid_sides[DirectionConstant.EAST ])
@@ -93,7 +91,7 @@ public abstract class Wire extends Block implements IWaterLoggable {
     if(state.get(WATERLOGGED)){
       world.getPendingFluidTicks().scheduleTick(currentPos, Fluids.WATER, Fluids.WATER.getTickRate(world));
     }
-    return getState(state, get_valid_sides(world, currentPos), world, currentPos);
+    return getState(state, world, currentPos);
   }
 
   @Override
