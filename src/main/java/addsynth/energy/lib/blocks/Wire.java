@@ -69,14 +69,10 @@ public abstract class Wire extends Block implements IWaterLoggable {
   protected abstract boolean[] get_valid_sides(IBlockReader world, BlockPos pos);
 
   private static final BlockState getState(final BlockState state, final boolean[] valid_sides, final IWorld world, final BlockPos position){
-    state.with(DOWN,  valid_sides[DirectionConstant.DOWN ]);
-    state.with(UP,    valid_sides[DirectionConstant.UP   ]);
-    state.with(NORTH, valid_sides[DirectionConstant.NORTH]);
-    state.with(SOUTH, valid_sides[DirectionConstant.SOUTH]);
-    state.with(WEST,  valid_sides[DirectionConstant.WEST ]);
-    state.with(EAST,  valid_sides[DirectionConstant.EAST ]);
-    state.with(WATERLOGGED, world.getFluidState(position).getFluid() == Fluids.WATER);
-    return state;
+    return state.with(DOWN,  valid_sides[DirectionConstant.DOWN ]).with(UP,    valid_sides[DirectionConstant.UP   ])
+                .with(NORTH, valid_sides[DirectionConstant.NORTH]).with(SOUTH, valid_sides[DirectionConstant.SOUTH])
+                .with(WEST,  valid_sides[DirectionConstant.WEST ]).with(EAST,  valid_sides[DirectionConstant.EAST ])
+                .with(WATERLOGGED, world.getFluidState(position).getFluid() == Fluids.WATER);
   }
 
   @Override
