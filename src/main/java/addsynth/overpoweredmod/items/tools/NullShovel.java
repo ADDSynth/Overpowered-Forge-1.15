@@ -16,13 +16,8 @@ public class NullShovel extends ShovelItem {
   }
 
   @Override
-  public boolean isDamageable(){
-    return false;
-  }
-
-  @Override
   public boolean hasEffect(ItemStack stack){
-      return true;
+    return true;
   }
   
   @Override

@@ -15,14 +15,8 @@ public class NullHoe extends HoeItem {
   }
 
   @Override
-  public boolean isDamageable(){
-    return false;
-  }
-
-  @Override
-  public boolean hasEffect(ItemStack stack)
-  {
-      return true;
+  public boolean hasEffect(ItemStack stack){
+    return true;
   }
   
   @Override

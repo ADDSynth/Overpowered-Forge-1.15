@@ -16,14 +16,8 @@ public class NullSword extends SwordItem {
   }
 
   @Override
-  public boolean isDamageable() {
-    return false;
-  }
-
-  @Override
-  public boolean hasEffect(ItemStack stack)
-  {
-      return true;
+  public boolean hasEffect(ItemStack stack){
+    return true;
   }
   
   @Override

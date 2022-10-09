@@ -60,10 +60,8 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
       final String initial_distance = Integer.toString(tile.getLaserDistance());
       setText(initial_distance);
       setMaxStringLength(4); // FEATURE: add a numbers-only textbox to ADDSynthCore.
-      setEnableBackgroundDrawing(true);
-      setVisible(true);
       setTextColor(16777215);
-      setResponder((String text) -> text_field_changed()); // TODO: can be static or instance method, don't want to bother figuring out which one is better right now.
+      setResponder((String text) -> text_field_changed());
     }
 
     private final void text_field_changed(){
