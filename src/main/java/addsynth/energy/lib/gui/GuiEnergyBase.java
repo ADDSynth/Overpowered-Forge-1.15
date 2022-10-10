@@ -135,6 +135,7 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
     }
   }
 
+  /** Draws charge time at bottom-left of gui. */
   protected final void draw_energy_difference(final int draw_y){
     if(energy == null){
       GuiUtil.draw_text_left(null_energy_reference, 6, draw_y);
@@ -150,6 +151,27 @@ public abstract class GuiEnergyBase<T extends TileEntity & IEnergyUser, C extend
       break;
     case 0:
       GuiUtil.draw_text_left(no_energy_change_text, 6, draw_y);
+      break;
+    }
+  }
+
+  /** Draws charge time at bottom-center of gui. I think this is generally not used. */
+  protected final void draw_energy_difference_center(final int draw_y){
+    final int draw_x = xSize/2;
+    if(energy == null){
+      GuiUtil.draw_text_center(null_energy_reference, draw_x, draw_y);
+      return;
+    }
+    final double difference = energy.getDifference();
+    switch((int)Math.signum(difference)){
+    case 1:
+      GuiUtil.draw_text_center(full_charge_time_text+": "+StringUtil.print_time((int)Math.ceil(energy.getEnergyNeeded() / difference)), draw_x, draw_y);
+      break;
+    case -1:
+      GuiUtil.draw_text_center(charge_remaining_text+": "+StringUtil.print_time((int)Math.ceil(energy.getEnergy() / (-difference))), draw_x, draw_y);
+      break;
+    case 0:
+      GuiUtil.draw_text_center(no_energy_change_text, draw_x, draw_y);
       break;
     }
   }

@@ -4,6 +4,7 @@ import addsynth.core.gui.util.GuiUtil;
 import addsynth.core.util.StringUtil;
 import addsynth.energy.lib.gui.GuiEnergyBase;
 import addsynth.energy.lib.gui.widgets.AutoShutoffCheckbox;
+import addsynth.energy.lib.gui.widgets.EnergyProgressBar;
 import addsynth.energy.lib.gui.widgets.OnOffSwitch;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.NetworkHandler;
@@ -29,25 +30,27 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   private final String distance_text        = StringUtil.translate("gui.overpowered.laser_housing.distance");
 
   private TextFieldWidget text_box;
+  private final EnergyProgressBar energy_bar = new EnergyProgressBar(9, 79, 163, 16, 22, 162);
 
+  private static final int gui_height = 115;
   private static final int space = 4;
 
-  private static final int line_1 = 36;
-  private static final int text_box_width = 50;
-  private static final int text_box_height = 14;
-  private static final int text_box_x = 60; // 6 + fontRendererObj.getStringWidth("Distance") + space
-  private static final int text_box_y = line_1 + 8 + space;
-  private static final int line_2 = text_box_y + 3;
+  private static final int line_1 = 39;
+  private static final int text_box_width = 48;
+  private static final int text_box_height = 15;
+  private static final int text_box_x = 151;
+  private static final int text_box_y = line_1 -3;
+  private static final int line_2 = text_box_y + text_box_height + space;
 
-  private static final int line_3 = text_box_y + text_box_height + space;
-  private static final int line_4 = line_3 + 8 + space;
-  private static final int line_5 = line_4 + 8 + space;
+  private static final int line_3 = line_2 + 8 + space;
+  private static final int line_4 = 84; // line_3 (67) + 8 + 13
+  private static final int line_5 = gui_height - 14;
 
-  private static final int check_box_x = 70;
+  private static final int check_box_x = 62;
   private static final int check_box_y = 19;
 
   public GuiLaserHousing(final ContainerLaserHousing container, final PlayerInventory player_inventory, final ITextComponent title){
-    super(176, 104, container, player_inventory, title, laser_machine_gui_texture);
+    super(208, gui_height, container, player_inventory, title, laser_machine_gui_texture);
   }
 
   private static final class LaserDistanceTextField extends TextFieldWidget {
@@ -125,15 +128,17 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
   @Override
   protected final void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY){
     guiUtil.draw_background_texture();
+    energy_bar.drawHorizontal(this, energy);
   }
 
   @Override
   protected final void drawGuiContainerForegroundLayer(int mouseX, int mouseY){
     guiUtil.draw_title(this.title);
     GuiUtil.draw_text_left(lasers_text+": "+tile.number_of_lasers, 6, line_1);
-    GuiUtil.draw_text_left(distance_text+": ", 6, line_2);
+    GuiUtil.draw_text_right(distance_text+": ", text_box_x - 2, line_1);
     draw_energy_requirements();
-    draw_energy_difference(line_5);
+    GuiUtil.draw_text_right(energy_bar.getEnergyPercentage(), width - 6, line_4);
+    draw_energy_difference_center(line_5);
   }
 
   private final void draw_energy_requirements(){
@@ -146,14 +151,14 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
     final int word_2_width = font.getStringWidth(word_2);
     
     if(Math.max(word_1_width, word_2_width) == word_1_width){
-      GuiUtil.draw_text_left(word_1, 6, line_3);
-      GuiUtil.draw_text_left(current_energy_text+":", 6, line_4);
-      GuiUtil.draw_text_right(current_energy, 6 + word_1_width, line_4);
+      GuiUtil.draw_text_left(word_1, 6, line_2);
+      GuiUtil.draw_text_left(current_energy_text+":", 6, line_3);
+      GuiUtil.draw_text_right(current_energy, 6 + word_1_width, line_3);
     }
     else{
-      GuiUtil.draw_text_left(required_energy_text+":", 6, line_3);
-      GuiUtil.draw_text_right(required_energy, 6 + word_2_width, line_3);
-      GuiUtil.draw_text_left(word_2, 6, line_4);
+      GuiUtil.draw_text_left(required_energy_text+":", 6, line_2);
+      GuiUtil.draw_text_right(required_energy, 6 + word_2_width, line_2);
+      GuiUtil.draw_text_left(word_2, 6, line_3);
     }
   }
 
