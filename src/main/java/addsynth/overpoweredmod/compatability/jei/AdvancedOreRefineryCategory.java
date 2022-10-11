@@ -1,5 +1,6 @@
 package addsynth.overpoweredmod.compatability.jei;
 
+import addsynth.core.util.StringUtil;
 import addsynth.overpoweredmod.OverpoweredTechnology;
 import addsynth.overpoweredmod.game.reference.Names;
 import addsynth.overpoweredmod.game.reference.OverpoweredBlocks;
@@ -38,7 +39,7 @@ public final class AdvancedOreRefineryCategory  implements IRecipeCategory<OreRe
 
   @Override
   public String getTitle(){
-    return "Advanced Ore Refinery";
+    return StringUtil.translate(OverpoweredBlocks.advanced_ore_refinery.getTranslationKey());
   }
 
   @Override
