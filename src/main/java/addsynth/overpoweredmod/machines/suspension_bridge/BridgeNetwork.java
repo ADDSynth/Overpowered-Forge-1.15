@@ -17,7 +17,7 @@ import addsynth.overpoweredmod.assets.CustomAdvancements;
 import addsynth.overpoweredmod.config.Config;
 import addsynth.overpoweredmod.game.NetworkHandler;
 import addsynth.overpoweredmod.game.core.Lens;
-import addsynth.overpoweredmod.game.core.Machines;
+import addsynth.overpoweredmod.game.reference.OverpoweredBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -526,26 +526,26 @@ public final class BridgeNetwork extends BlockNetwork<TileSuspensionBridge> {
   private final void set_energy_block(final int direction, final BlockPos position){
     if(direction == DirectionConstant.DOWN || direction == DirectionConstant.UP){
       switch(lens_index){
-      case 0: world.setBlockState(position, Machines.white_energy_bridge.getRotated(rotate_direction));   break;
-      case 1: world.setBlockState(position, Machines.red_energy_bridge.getRotated(rotate_direction));     break;
-      case 2: world.setBlockState(position, Machines.orange_energy_bridge.getRotated(rotate_direction));  break;
-      case 3: world.setBlockState(position, Machines.yellow_energy_bridge.getRotated(rotate_direction));  break;
-      case 4: world.setBlockState(position, Machines.green_energy_bridge.getRotated(rotate_direction));   break;
-      case 5: world.setBlockState(position, Machines.cyan_energy_bridge.getRotated(rotate_direction));    break;
-      case 6: world.setBlockState(position, Machines.blue_energy_bridge.getRotated(rotate_direction));    break;
-      case 7: world.setBlockState(position, Machines.magenta_energy_bridge.getRotated(rotate_direction)); break;
+      case 0: world.setBlockState(position, OverpoweredBlocks.white_energy_bridge.getRotated(rotate_direction));   break;
+      case 1: world.setBlockState(position, OverpoweredBlocks.red_energy_bridge.getRotated(rotate_direction));     break;
+      case 2: world.setBlockState(position, OverpoweredBlocks.orange_energy_bridge.getRotated(rotate_direction));  break;
+      case 3: world.setBlockState(position, OverpoweredBlocks.yellow_energy_bridge.getRotated(rotate_direction));  break;
+      case 4: world.setBlockState(position, OverpoweredBlocks.green_energy_bridge.getRotated(rotate_direction));   break;
+      case 5: world.setBlockState(position, OverpoweredBlocks.cyan_energy_bridge.getRotated(rotate_direction));    break;
+      case 6: world.setBlockState(position, OverpoweredBlocks.blue_energy_bridge.getRotated(rotate_direction));    break;
+      case 7: world.setBlockState(position, OverpoweredBlocks.magenta_energy_bridge.getRotated(rotate_direction)); break;
       }
     }
     else{
       switch(lens_index){
-      case 0: world.setBlockState(position, Machines.white_energy_bridge.getDefaultState());   break;
-      case 1: world.setBlockState(position, Machines.red_energy_bridge.getDefaultState());     break;
-      case 2: world.setBlockState(position, Machines.orange_energy_bridge.getDefaultState());  break;
-      case 3: world.setBlockState(position, Machines.yellow_energy_bridge.getDefaultState());  break;
-      case 4: world.setBlockState(position, Machines.green_energy_bridge.getDefaultState());   break;
-      case 5: world.setBlockState(position, Machines.cyan_energy_bridge.getDefaultState());    break;
-      case 6: world.setBlockState(position, Machines.blue_energy_bridge.getDefaultState());    break;
-      case 7: world.setBlockState(position, Machines.magenta_energy_bridge.getDefaultState()); break;
+      case 0: world.setBlockState(position, OverpoweredBlocks.white_energy_bridge.getDefaultState());   break;
+      case 1: world.setBlockState(position, OverpoweredBlocks.red_energy_bridge.getDefaultState());     break;
+      case 2: world.setBlockState(position, OverpoweredBlocks.orange_energy_bridge.getDefaultState());  break;
+      case 3: world.setBlockState(position, OverpoweredBlocks.yellow_energy_bridge.getDefaultState());  break;
+      case 4: world.setBlockState(position, OverpoweredBlocks.green_energy_bridge.getDefaultState());   break;
+      case 5: world.setBlockState(position, OverpoweredBlocks.cyan_energy_bridge.getDefaultState());    break;
+      case 6: world.setBlockState(position, OverpoweredBlocks.blue_energy_bridge.getDefaultState());    break;
+      case 7: world.setBlockState(position, OverpoweredBlocks.magenta_energy_bridge.getDefaultState()); break;
       }
     }
   }

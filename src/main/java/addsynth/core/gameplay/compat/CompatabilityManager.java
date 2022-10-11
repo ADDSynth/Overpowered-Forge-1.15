@@ -27,7 +27,7 @@ public final class CompatabilityManager {
     override_scythe_field(Core.gold_scythe, leaves);
     override_scythe_field(Core.diamond_scythe, leaves);
     if(Compatibility.OVERPOWERED_TECHNOLOGY.loaded){ // TEMP
-      override_scythe_field(addsynth.overpoweredmod.game.core.Tools.overpowered_scythe, leaves);
+      override_scythe_field(addsynth.overpoweredmod.game.reference.OverpoweredItems.celestial_scythe, leaves);
     }
   }
 

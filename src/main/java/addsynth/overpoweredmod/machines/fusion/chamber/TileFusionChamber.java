@@ -5,8 +5,8 @@ import addsynth.core.game.inventory.SlotData;
 import addsynth.core.game.tiles.TileStorageMachine;
 import addsynth.core.util.game.data.AdvancementUtil;
 import addsynth.overpoweredmod.assets.CustomAdvancements;
-import addsynth.overpoweredmod.game.core.Machines;
-import addsynth.overpoweredmod.game.core.ModItems;
+import addsynth.overpoweredmod.game.reference.OverpoweredBlocks;
+import addsynth.overpoweredmod.game.reference.OverpoweredItems;
 import addsynth.overpoweredmod.registers.Tiles;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -22,7 +22,7 @@ import net.minecraft.world.Explosion;
 
 public final class TileFusionChamber extends TileStorageMachine implements INamedContainerProvider {
 
-  public static final Item[] input_filter = new Item[]{ModItems.fusion_core};
+  public static final Item[] input_filter = new Item[]{OverpoweredItems.fusion_core};
   private static final SlotData[] slot_data = {new SlotData(input_filter, 1)};
 
   /** A standard TNT explosion is size of 4. */
@@ -57,7 +57,7 @@ public final class TileFusionChamber extends TileStorageMachine implements IName
           if(state){
             // TODO: DO NOT INSERT a Laser Effect block in the world! Replace this with some sort of
             //       OpenGL special effects that doesn't touch the world and immune to player interference.
-            world.setBlockState(position, Machines.fusion_control_laser_beam.getDefaultState(), 3);
+            world.setBlockState(position, OverpoweredBlocks.fusion_control_laser_beam.getDefaultState(), 3);
             // TEST why would we need block updates for this? Can this just be set to 2 for Client updates?
             AdvancementUtil.grantAdvancement(player_name, world, CustomAdvancements.FUSION_ENERGY);
           }

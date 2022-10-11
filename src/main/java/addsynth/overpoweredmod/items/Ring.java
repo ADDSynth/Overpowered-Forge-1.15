@@ -5,7 +5,7 @@ import javax.annotation.Nullable;
 import addsynth.core.game.items.ItemValue;
 import addsynth.overpoweredmod.compatability.curios.CuriosCapabilityProvider;
 import addsynth.overpoweredmod.compatability.curios.RingEffects;
-import addsynth.overpoweredmod.game.Names;
+import addsynth.overpoweredmod.game.reference.Names;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.Item;

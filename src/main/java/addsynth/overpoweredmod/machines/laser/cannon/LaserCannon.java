@@ -8,7 +8,7 @@ import addsynth.core.util.constants.DirectionConstant;
 import addsynth.core.util.world.WorldUtil;
 import addsynth.overpoweredmod.assets.CreativeTabs;
 import addsynth.overpoweredmod.game.core.Laser;
-import addsynth.overpoweredmod.game.core.Machines;
+import addsynth.overpoweredmod.game.reference.OverpoweredBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.IWaterLoggable;
@@ -141,9 +141,9 @@ public final class LaserCannon extends Block implements IWaterLoggable {
   public boolean isValidPosition(BlockState state, IWorldReader world, BlockPos pos){
     final Block block = world.getBlockState(pos.offset(state.get(FACING).getOpposite())).getBlock();
     if(color == -1){
-      return block == Machines.fusion_control_unit;
+      return block == OverpoweredBlocks.fusion_control_unit;
     }
-    return block == Machines.laser_housing;
+    return block == OverpoweredBlocks.laser_housing;
   }
 
   @Override
@@ -188,7 +188,7 @@ public final class LaserCannon extends Block implements IWaterLoggable {
   public final void neighborChanged(BlockState state, World world, BlockPos position, Block block, BlockPos neighbor, boolean isMoving){
     if(world.isRemote == false){
       if(isValidPosition(state, world, position) == false){
-        final ItemStack stack = color >= 0 ? new ItemStack(Laser.index[color].cannon, 1) : new ItemStack(Machines.fusion_control_laser, 1);
+        final ItemStack stack = color >= 0 ? new ItemStack(Laser.index[color].cannon, 1) : new ItemStack(OverpoweredBlocks.fusion_control_laser, 1);
         WorldUtil.spawnItemStack(world, position, stack);
         world.removeBlock(position, isMoving);
       }
