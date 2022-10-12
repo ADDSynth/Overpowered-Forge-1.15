@@ -3,7 +3,6 @@ package addsynth.core.util.game;
 import javax.annotation.Nonnull;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.util.player.PlayerUtil;
-import addsynth.core.util.server.ServerUtils;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.server.MinecraftServer;
@@ -42,7 +41,7 @@ public final class MessageUtil {
 
   public static final void send_to_all_players(final World world, final String translation_key, final Object ... arguments){
     @SuppressWarnings("resource")
-    final MinecraftServer server = ServerUtils.getServer(world);
+    final MinecraftServer server = world.getServer();
     if(server != null){
       send_to_all_players(server, TextComponentHelper.createComponentTranslation(server, translation_key, arguments));
     }
@@ -50,7 +49,7 @@ public final class MessageUtil {
 
   public static final void send_to_all_players(final World world, final ITextComponent text_component){
     @SuppressWarnings("resource")
-    final MinecraftServer server = ServerUtils.getServer(world);
+    final MinecraftServer server = world.getServer();
     if(server != null){
       send_to_all_players(server, text_component);
     }
@@ -65,7 +64,7 @@ public final class MessageUtil {
 
   public static final void send_to_all_players_in_world(final World world, final String translation_key, final Object ... arguments){
     @SuppressWarnings("resource")
-    final MinecraftServer server = ServerUtils.getServer(world);
+    final MinecraftServer server = world.getServer();
     if(server != null){
       PlayerUtil.allPlayersInWorld(server, world, (ServerPlayerEntity player) -> {
         player.sendMessage(TextComponentHelper.createComponentTranslation(server, translation_key, arguments));
@@ -75,7 +74,7 @@ public final class MessageUtil {
 
   public static final void send_to_all_players_in_world(final World world, final ITextComponent text_component){
     @SuppressWarnings("resource")
-    final MinecraftServer server = ServerUtils.getServer(world);
+    final MinecraftServer server = world.getServer();
     if(server != null){
       PlayerUtil.allPlayersInWorld(server, world, (ServerPlayerEntity player) -> {
         player.sendMessage(text_component);
