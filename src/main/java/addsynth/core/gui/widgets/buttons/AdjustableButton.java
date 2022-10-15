@@ -27,7 +27,7 @@ public abstract class AdjustableButton extends AbstractButton {
   public AdjustableButton(int x, int y, int width, int height){
     super(x, y, width, Math.min(height, max_height), "");
     if(height > max_height){
-      ADDSynthCore.log.warn(StringUtil.build("Cannot set height of ", AdjustableButton.class.getSimpleName(), " higher than ", Integer.toString(max_height), "."));
+      ADDSynthCore.log.warn(StringUtil.build("Cannot set height of ", AdjustableButton.class.getSimpleName(), " higher than ", max_height, "."));
     }
   }
 
@@ -42,7 +42,7 @@ public abstract class AdjustableButton extends AbstractButton {
   public AdjustableButton(int x, int y, int width, int height, @Nonnull String buttonText){
     super(x, y, width, Math.min(height, max_height), buttonText);
     if(height > max_height){
-      ADDSynthCore.log.warn(StringUtil.build("Cannot set height of ", AdjustableButton.class.getSimpleName(), " higher than ", Integer.toString(max_height), "."));
+      ADDSynthCore.log.warn(StringUtil.build("Cannot set height of ", AdjustableButton.class.getSimpleName(), " higher than ", max_height, "."));
     }
   }
 
