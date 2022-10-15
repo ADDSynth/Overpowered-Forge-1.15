@@ -6,7 +6,7 @@ import java.util.Map.Entry;
 import java.util.Set;
 import addsynth.core.ADDSynthCore;
 import addsynth.core.game.inventory.InventoryUtil;
-import addsynth.core.game.items.ItemUtil;
+import addsynth.core.game.item.ItemUtil;
 import addsynth.core.util.server.ServerUtils;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;

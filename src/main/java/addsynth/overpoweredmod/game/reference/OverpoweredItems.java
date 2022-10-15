@@ -1,8 +1,8 @@
 package addsynth.overpoweredmod.game.reference;
 
 import addsynth.core.game.RegistryUtil;
-import addsynth.core.game.items.ArmorMaterial;
-import addsynth.core.game.items.EquipmentType;
+import addsynth.core.game.item.constants.ArmorMaterial;
+import addsynth.core.game.item.constants.EquipmentType;
 import addsynth.core.gameplay.items.ScytheTool;
 import addsynth.overpoweredmod.items.*;
 import addsynth.overpoweredmod.items.basic.*;
