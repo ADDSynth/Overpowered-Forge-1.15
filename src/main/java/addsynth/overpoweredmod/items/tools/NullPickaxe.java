@@ -11,7 +11,7 @@ import net.minecraft.item.Rarity;
 public class NullPickaxe extends PickaxeItem {
 
   public NullPickaxe(){
-    super(OverpoweredTiers.VOID, ToolConstants.pickaxe_damage, ToolConstants.pickaxe_speed, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+    super(OverpoweredTiers.VOID, ToolConstants.pickaxe_damage, ToolConstants.pickaxe_speed, new Item.Properties().group(CreativeTabs.creative_tab));
     setRegistryName(Names.VOID_PICKAXE);
   }
 

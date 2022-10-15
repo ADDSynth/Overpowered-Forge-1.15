@@ -10,7 +10,7 @@ import net.minecraft.item.Rarity;
 public class NullHoe extends HoeItem {
 
   public NullHoe(){
-    super(OverpoweredTiers.VOID, 0.0f, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+    super(OverpoweredTiers.VOID, 0.0f, new Item.Properties().group(CreativeTabs.creative_tab));
     setRegistryName(Names.VOID_HOE);
   }
 

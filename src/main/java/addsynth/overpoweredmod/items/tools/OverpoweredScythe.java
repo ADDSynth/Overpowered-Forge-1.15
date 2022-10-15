@@ -10,7 +10,7 @@ import net.minecraft.item.Rarity;
 public final class OverpoweredScythe extends ScytheTool {
 
   public OverpoweredScythe(){
-    super(Names.CELESTIAL_SCYTHE, OverpoweredTiers.CELESTIAL, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+    super(Names.CELESTIAL_SCYTHE, OverpoweredTiers.CELESTIAL, new Item.Properties().group(CreativeTabs.creative_tab));
   }
 
   @Override

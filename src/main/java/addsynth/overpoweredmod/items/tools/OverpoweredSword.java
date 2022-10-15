@@ -16,7 +16,7 @@ import net.minecraft.item.SwordItem;
 public final class OverpoweredSword extends SwordItem {
 
   public OverpoweredSword(){
-    super(OverpoweredTiers.CELESTIAL_SWORD, ToolConstants.sword_damage, ToolConstants.sword_damage, new Item.Properties().group(CreativeTabs.tools_creative_tab));
+    super(OverpoweredTiers.CELESTIAL_SWORD, ToolConstants.sword_damage, ToolConstants.sword_damage, new Item.Properties().group(CreativeTabs.creative_tab));
     setRegistryName(Names.CELESTIAL_SWORD);
   }
 
