@@ -40,7 +40,7 @@ public class ShapelessRecipeSerializer<T extends AbstractRecipe> extends ForgeRe
   // Start Here
   @Override
   public T read(ResourceLocation recipeId, JsonObject json){
-    String s = JSONUtils.getString(json, "group", "");
+    final String group = JSONUtils.getString(json, "group", "");
     NonNullList<Ingredient> nonnulllist = readIngredients(JSONUtils.getJsonArray(json, "ingredients"));
     if(nonnulllist.isEmpty()){
       throw new JsonParseException("No ingredients for "+recipe_type.getSimpleName()+" recipe");
@@ -49,13 +49,13 @@ public class ShapelessRecipeSerializer<T extends AbstractRecipe> extends ForgeRe
       throw new JsonParseException("Too many ingredients for "+recipe_type.getSimpleName()+" recipe. There can only be a max of "+max_size+" ingredients.");
     }
     ItemStack itemstack = ShapedRecipe.deserializeItem(JSONUtils.getJsonObject(json, "result"));
-    return JavaUtils.InvokeConstructor(recipe_type, recipeId, s, itemstack, nonnulllist);
+    return JavaUtils.InvokeConstructor(recipe_type, recipeId, group, itemstack, nonnulllist);
   }
 
   @Override
   @Nullable
   public T read(ResourceLocation recipeId, PacketBuffer buffer){
-    final String s = buffer.readString(32767); // bypasses the ClientOnly annotation, it's what vanilla does as well.
+    final String group = buffer.readString(32767); // bypasses the ClientOnly annotation, it's what vanilla does as well.
     final int i = buffer.readVarInt();
     NonNullList<Ingredient> nonnulllist = NonNullList.withSize(i, Ingredient.EMPTY);
 
@@ -64,7 +64,7 @@ public class ShapelessRecipeSerializer<T extends AbstractRecipe> extends ForgeRe
     }
 
     ItemStack itemstack = buffer.readItemStack();
-    return JavaUtils.InvokeConstructor(recipe_type, recipeId, s, itemstack, nonnulllist);
+    return JavaUtils.InvokeConstructor(recipe_type, recipeId, group, itemstack, nonnulllist);
   }
 
   @Override
