@@ -5,7 +5,7 @@ import addsynth.core.gameplay.blocks.CautionBlock;
 import addsynth.core.gameplay.items.ScytheTool;
 import addsynth.core.gameplay.music_box.MusicBox;
 import addsynth.core.gameplay.music_box.MusicSheet;
-import addsynth.core.gameplay.registers.Names;
+import addsynth.core.gameplay.reference.Names;
 import addsynth.core.gameplay.team_manager.TeamManagerBlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemTier;

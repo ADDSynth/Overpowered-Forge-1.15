@@ -1,8 +1,8 @@
 package addsynth.energy.lib.gui.widgets;
 
 import addsynth.core.util.StringUtil;
-import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.NetworkHandler;
+import addsynth.energy.gameplay.reference.GuiReference;
 import addsynth.energy.lib.network_messages.SwitchMachineMessage;
 import addsynth.energy.lib.tiles.machines.ISwitchableMachine;
 import com.mojang.blaze3d.platform.GlStateManager;
@@ -12,7 +12,6 @@ import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.client.gui.widget.button.AbstractButton;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * Draws a custom button which displays an on/off switch depending on the Machine's running state.
@@ -22,7 +21,6 @@ public final class OnOffSwitch<T extends TileEntity & ISwitchableMachine> extend
 
   private final T tile;
   private boolean power_state;
-  private static final ResourceLocation gui_switch = new ResourceLocation(ADDSynthEnergy.MOD_ID,"textures/gui/gui_textures.png");
 
   private final String  on_text = StringUtil.translate("gui.addsynth_energy.switch.on");
   private final String off_text = StringUtil.translate("gui.addsynth_energy.switch.off");
@@ -70,7 +68,7 @@ public final class OnOffSwitch<T extends TileEntity & ISwitchableMachine> extend
     }
 
     // Draw Power Switch
-    minecraft.getTextureManager().bindTexture(gui_switch);
+    minecraft.getTextureManager().bindTexture(GuiReference.widgets);
     RenderSystem.color4f(1.0F, 1.0F, 1.0F, 1.0F);
 
     // this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;

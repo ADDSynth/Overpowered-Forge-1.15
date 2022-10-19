@@ -6,19 +6,16 @@ import addsynth.core.gui.widgets.item.IngredientWidgetGroup;
 import addsynth.core.gui.widgets.scrollbar.ItemListEntry;
 import addsynth.core.gui.widgets.scrollbar.ItemListScrollbar;
 import addsynth.core.util.StringUtil;
-import addsynth.energy.ADDSynthEnergy;
 import addsynth.energy.gameplay.NetworkHandler;
 import addsynth.energy.gameplay.machines.circuit_fabricator.recipe.CircuitFabricatorRecipes;
+import addsynth.energy.gameplay.reference.GuiReference;
 import addsynth.energy.lib.gui.GuiEnergyBase;
 import addsynth.energy.lib.gui.widgets.WorkProgressBar;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
 
 public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabricator, CircuitFabricatorContainer> {
-
-  private static final ResourceLocation gui_texture = new ResourceLocation(ADDSynthEnergy.MOD_ID, "textures/gui/circuit_fabricator.png");
 
   private final String selected_text = StringUtil.translate("gui.addsynth_energy.common.selected");
   private String selected_item;
@@ -42,7 +39,7 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
   private ItemListScrollbar item_scrollbar;
   
   public CircuitFabricatorGui(final CircuitFabricatorContainer container, PlayerInventory player_inventory, ITextComponent title){
-    super(317, 239, container, player_inventory, title, gui_texture);
+    super(317, 239, container, player_inventory, title, GuiReference.circuit_fabricator);
   }
 
   @Override
