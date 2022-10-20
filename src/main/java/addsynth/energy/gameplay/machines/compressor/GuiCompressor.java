@@ -9,9 +9,6 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiCompressor extends GuiEnergyBase<TileCompressor, ContainerCompressor> {
 
-  private static final int work_percentage_text_y = 67;
-  private static final int time_left_y = 88;
-
   private final WorkProgressBar work_progress_bar = new WorkProgressBar(8, 79, 160, 5, 8, 194);
   
   public GuiCompressor(final ContainerCompressor container, final PlayerInventory player_inventory, final ITextComponent title){
@@ -30,8 +27,8 @@ public final class GuiCompressor extends GuiEnergyBase<TileCompressor, Container
     draw_energy_usage();
     draw_status(tile.getStatus());
     GuiUtil.drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 80, 42);
-    GuiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), guiUtil.center_x, work_percentage_text_y);
-    draw_time_left(time_left_y);
+    GuiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), guiUtil.center_x, 67);
+    draw_time_left(88);
   }
 
 }

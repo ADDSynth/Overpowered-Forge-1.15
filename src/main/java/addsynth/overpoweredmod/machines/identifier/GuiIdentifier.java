@@ -9,8 +9,6 @@ import net.minecraft.util.text.ITextComponent;
 
 public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, ContainerIdentifier> {
 
-  private static final int work_percentage_y = 63;
-
   private final WorkProgressBar work_progress_bar = new WorkProgressBar(8, 75, 160, 5, 11, 184);
 
   public GuiIdentifier(final ContainerIdentifier container, final PlayerInventory player_inventory, final ITextComponent title){
@@ -29,7 +27,7 @@ public final class GuiIdentifier extends GuiEnergyBase<TileIdentifier, Container
     draw_energy_usage();
     draw_status(tile.getStatus());
     GuiUtil.drawItemStack(tile.getWorkingInventory().getStackInSlot(0), 76, 41);
-    GuiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), guiUtil.center_x, work_percentage_y);
+    GuiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), guiUtil.center_x, 63);
   }
 
 }

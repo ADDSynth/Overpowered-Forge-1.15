@@ -12,11 +12,7 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<TileEnergySto
 
   private final String energy_stored_text = StringUtil.translate("gui.addsynth_energy.common.energy_stored");
 
-  private static final int draw_energy_text_y  = 25;
   private static final int draw_energy_level_y = 36;
-  private static final int draw_energy_x   = 88;
-  private static final int draw_capacity_x = 93;
-  private static final int draw_energy_percentage_y = 47;
   private final EnergyProgressBar energy_bar = new EnergyProgressBar(9, 59, 174, 17, 9, 106);
 
   public GuiEnergyStorageContainer(final ContainerEnergyStorage container, final PlayerInventory player_inventory, final ITextComponent title){
@@ -32,10 +28,10 @@ public final class GuiEnergyStorageContainer extends GuiEnergyBase<TileEnergySto
   @Override
   protected final void drawGuiContainerForegroundLayer(final int mouseX, final int mouseY){
     guiUtil.draw_title(this.title);
-    GuiUtil.draw_text_center(energy_stored_text+":", guiUtil.center_x, draw_energy_text_y);
-    GuiUtil.draw_text_right(String.format("%.2f", energy.getEnergy()), draw_energy_x, draw_energy_level_y);
-    GuiUtil.draw_text_left("/ "+energy.getCapacity(), draw_capacity_x, draw_energy_level_y);
-    GuiUtil.draw_text_center(energy_bar.getEnergyPercentage(), guiUtil.center_x, draw_energy_percentage_y);
+    GuiUtil.draw_text_center(energy_stored_text+":", guiUtil.center_x, 25);
+    GuiUtil.draw_text_right(String.format("%.2f", energy.getEnergy()), 88, draw_energy_level_y);
+    GuiUtil.draw_text_left("/ "+energy.getCapacity(), 93, draw_energy_level_y);
+    GuiUtil.draw_text_center(energy_bar.getEnergyPercentage(), guiUtil.center_x, 47);
     draw_energy_difference(80);
   }
 

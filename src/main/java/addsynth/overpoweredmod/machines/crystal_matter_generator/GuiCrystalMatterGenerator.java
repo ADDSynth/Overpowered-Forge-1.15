@@ -11,8 +11,6 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
 
   private final WorkProgressBar work_progress_bar = new WorkProgressBar(8, 89, 160, 5, 11, 194);
   
-  private static final int work_percentage_text_y = 77; // OPTIMIZE any guis that have this variable and only use it once.
-
   public GuiCrystalMatterGenerator(final ContainerCrystalGenerator container, final PlayerInventory player_inventory, final ITextComponent title){
     super(176, 192, container, player_inventory, title, GuiReference.crystal_matter_generator);
   }
@@ -34,7 +32,7 @@ public final class GuiCrystalMatterGenerator extends GuiEnergyBase<TileCrystalMa
     guiUtil.draw_title(this.title);
     draw_status_after_switch(tile.getStatus());
     draw_energy_usage(6, 38);
-    guiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), work_percentage_text_y);
+    guiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), 77);
     draw_time_left(98);
   }
 
