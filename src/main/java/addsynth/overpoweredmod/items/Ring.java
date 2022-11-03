@@ -2,6 +2,7 @@ package addsynth.overpoweredmod.items;
 
 import java.util.List;
 import javax.annotation.Nullable;
+import addsynth.core.compat.Compatibility;
 import addsynth.core.game.item.constants.ItemValue;
 import addsynth.overpoweredmod.compatability.curios.CuriosCapabilityProvider;
 import addsynth.overpoweredmod.compatability.curios.RingEffects;
@@ -26,7 +27,7 @@ public final class Ring extends OverpoweredItem {
   @Override
   @Nullable
   public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundNBT nbt){
-    return new CuriosCapabilityProvider(
+    return Compatibility.CURIOS.loaded ? new CuriosCapabilityProvider(
       new ICurio(){
       
         @Override
@@ -50,7 +51,7 @@ public final class Ring extends OverpoweredItem {
         }
         
       }
-    );
+    ) : null;
   }
 
   @Override
