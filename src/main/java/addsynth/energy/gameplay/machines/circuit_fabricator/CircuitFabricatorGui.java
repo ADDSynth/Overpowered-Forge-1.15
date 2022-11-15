@@ -141,7 +141,7 @@ public final class CircuitFabricatorGui extends GuiEnergyBase<TileCircuitFabrica
     GuiUtil.draw_text_left(selected_text+": "+selected_item, 6, 39);
     // GuiUtil.drawItemStack(circuit_stack[tile.getCircuitID()], 102, 29);
     GuiUtil.draw_text_center(work_progress_bar.getWorkTimeProgress(), 270, 113);
-    draw_time_left(145);
+    draw_time_left_center(145);
   }
 
   @Override
