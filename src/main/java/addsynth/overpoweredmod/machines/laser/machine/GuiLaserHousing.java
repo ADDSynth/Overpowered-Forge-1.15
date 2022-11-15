@@ -133,7 +133,7 @@ public final class GuiLaserHousing extends GuiEnergyBase<TileLaserHousing, Conta
     GuiUtil.draw_text_left(lasers_text+": "+tile.number_of_lasers, 6, line_1);
     GuiUtil.draw_text_right(distance_text+": ", text_box_x - 2, line_1);
     draw_energy_requirements();
-    GuiUtil.draw_text_right(energy_bar.getEnergyPercentage(), width - 6, line_4);
+    GuiUtil.draw_text_right(energy_bar.getEnergyPercentage(), xSize - 6, line_4);
     draw_energy_difference_center(line_5);
   }
 
