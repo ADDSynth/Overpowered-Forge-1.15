@@ -33,7 +33,7 @@ public final class WorldgenConfig {
   // Rare: 3x (0 - 96) every 32 levels.
   
   private static final int DEFAULT_SILICON_MAX_HEIGHT = 128;
-  private static final int DEFAULT_SILICON_TRIES = 11;
+  private static final int DEFAULT_SILICON_TRIES = 14;
   private static final int DEFAULT_SILICON_ORE_SIZE = 4; // Keep this at 4. Good number.
 
   public static ForgeConfigSpec.BooleanValue generate_ruby;
